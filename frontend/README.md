@@ -1,7 +1,5 @@
 # frontend
 
-Vue.js (v3) + Spectre.css + TypeScript
-
 ## Project setup
 ```
 yarn install
