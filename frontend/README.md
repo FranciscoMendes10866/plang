@@ -1,5 +1,7 @@
 # frontend
 
+Vue.js (v3) + Bulma.css + TypeScript
+
 ## Project setup
 ```
 yarn install
