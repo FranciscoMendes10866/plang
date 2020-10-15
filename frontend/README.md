@@ -1,7 +1,5 @@
 # frontend
 
-Vue.js (v3) + Bulma.css + TypeScript
-
 ## Project setup
 ```
 yarn install
@@ -15,6 +13,11 @@ yarn serve
 ### Compiles and minifies for production
 ```
 yarn build
+```
+
+### Run your end-to-end tests
+```
+yarn test:e2e
 ```
 
 ### Lints and fixes files
