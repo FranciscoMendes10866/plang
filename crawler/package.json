@@ -4,11 +4,14 @@
   "main": "index.js",
   "license": "MIT",
   "scripts": {
-    "start": "nodemon src/index.js"
+    "dev": "nodemon src/index.js",
+    "start": "sucrase-node src/index.js"
   },
   "dependencies": {
-    "nodemon": "^2.0.6",
     "puppeteer": "^5.4.0",
     "sucrase": "^3.16.0"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.6"
   }
 }
