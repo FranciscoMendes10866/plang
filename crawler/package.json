@@ -1,0 +1,14 @@
+{
+  "name": "crawler",
+  "version": "1.0.0",
+  "main": "index.js",
+  "license": "MIT",
+  "scripts": {
+    "start": "nodemon src/index.js"
+  },
+  "dependencies": {
+    "nodemon": "^2.0.6",
+    "puppeteer": "^5.4.0",
+    "sucrase": "^3.16.0"
+  }
+}
