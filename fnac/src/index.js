@@ -1,4 +1,3 @@
-
 import fastify from 'fastify';
 import puppeteer from 'puppeteer';
 

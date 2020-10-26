@@ -22,7 +22,10 @@
                   </div>
                 </div>
                 <div class="column is-1">
-                  <button class="button is-medium btn-bg-main mt-1" @click.prevent="reset">
+                  <button
+                    class="button is-medium btn-bg-main mt-1"
+                    @click.prevent="reset"
+                  >
                     Search
                   </button>
                 </div>
@@ -40,15 +43,15 @@ import { defineComponent, inject } from "vue";
 
 export default defineComponent({
   setup() {
-    const store: any = inject('store')
+    const store: any = inject("store");
 
     async function reset() {
-      store.state.fnacResults = []
+      store.state.fnacResults = [];
     }
     return {
       store,
       reset
-    }
+    };
   }
 });
 </script>
