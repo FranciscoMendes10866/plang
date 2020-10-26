@@ -32,7 +32,7 @@ services:
     build:
       context: ./fnac
     ports:
-      - 8538:8538
+      - 4159:4159
     restart: on-failure
   # Second Go Fiber Api
   inter:
@@ -41,5 +41,5 @@ services:
     build:
       context: ./inter
     ports:
-      - 6518:6518
+      - 5256:5256
     restart: on-failure
