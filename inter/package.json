@@ -8,6 +8,7 @@
     "start": "sucrase-node src/index.js"
   },
   "dependencies": {
+    "fastify": "^3.7.0",
     "puppeteer": "^5.4.0",
     "sucrase": "^3.16.0"
   },
