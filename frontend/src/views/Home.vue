@@ -2,6 +2,7 @@
   <div class="hero bg-main is-fullheight">
     <div class="hero-body">
       <div class="container">
+        <h1 class="has-text-white">{{ store.state.fnacResults }}</h1>
         <form>
           <div class="field">
             <div class="control">
@@ -21,7 +22,7 @@
                   </div>
                 </div>
                 <div class="column is-1">
-                  <button class="button is-medium btn-bg-main mt-1">
+                  <button class="button is-medium btn-bg-main mt-1" @click.prevent="reset">
                     Search
                   </button>
                 </div>
@@ -35,9 +36,19 @@
 </template>
 
 <script lang="ts">
-import { defineComponent } from "vue";
+import { defineComponent, inject } from "vue";
 
 export default defineComponent({
-  name: "Home"
+  setup() {
+    const store: any = inject('store')
+
+    async function reset() {
+      store.state.fnacResults = []
+    }
+    return {
+      store,
+      reset
+    }
+  }
 });
 </script>
