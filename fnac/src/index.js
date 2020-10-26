@@ -1,10 +1,15 @@
+
+import fastify from 'fastify';
 import puppeteer from 'puppeteer';
 
-(async () => {
+const app = fastify();
+
+app.post('/', async (request, reply) => {
+  const { searchProduct } = request.body;
   const browser = await puppeteer.launch({ headless: false, defaultViewport: false });
   const page = await browser.newPage();
   await page.goto('https://www.fr.fnac.ch/', { waitUntil: 'networkidle2' });
-  await page.type('.Header__search-input', 'Playstation 5', { delay: 100 });
+  await page.type('.Header__search-input', searchProduct, { delay: 100 });
   await page.$eval('.Header__search-submit', (button) => button.click());
   await page.waitFor('.Article-item');
   const results = await page.$$eval('.Article-item', (rows) => rows.map((row) => {
@@ -16,5 +21,7 @@ import puppeteer from 'puppeteer';
     properties.name = anchorElement.innerText;
     return properties;
   }));
-  console.log(results);
-})();
+  return reply.send(results);
+});
+
+app.listen(4159);
