@@ -7,8 +7,8 @@ import { defineComponent, provide } from "vue";
 import store from "./store/index";
 
 export default defineComponent({
-  provide: {
-    store
+  setup() {
+    provide("store", store);
   }
 });
 </script>
