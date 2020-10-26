@@ -1,0 +1,45 @@
+version: "3.8"
+
+services:
+  # Proxies requests to internal services
+  nginx-reverse-proxy:
+    image: nginx:1.19.3-alpine
+    container_name: nginx_reverse_proxy
+    depends_on:
+      - frontend
+      - fnac
+      - inter
+    volumes:
+      - ./nginx/nginx.conf:/etc/nginx/nginx.conf
+    ports:
+      - 80:80
+  # Frontend - Vue Project
+  frontend:
+    image: frontend
+    container_name: frontend
+    build:
+      context: ./frontend
+    depends_on:
+      - fnac
+      - inter
+    ports:
+      - 8080:80
+    restart: on-failure
+  # First Go Fiber Api
+  fnac:
+    image: fnac
+    container_name: fnac
+    build:
+      context: ./fnac
+    ports:
+      - 8538:8538
+    restart: on-failure
+  # Second Go Fiber Api
+  inter:
+    image: inter
+    container_name: inter
+    build:
+      context: ./inter
+    ports:
+      - 6518:6518
+    restart: on-failure
