@@ -2,7 +2,6 @@
   <div class="hero bg-main is-fullheight">
     <div class="hero-body">
       <div class="container">
-        <h1 class="has-text-white">{{ store.state.fnacResults }}</h1>
         <form>
           <div class="field">
             <div class="control">
@@ -11,6 +10,7 @@
                   <div class="field">
                     <p class="control has-icons-left has-icons-right">
                       <input
+                        v-model="search"
                         class="input is-medium"
                         type="email"
                         placeholder="What product?"
@@ -24,7 +24,7 @@
                 <div class="column is-1">
                   <button
                     class="button is-medium btn-bg-main mt-1"
-                    @click.prevent="reset"
+                    @click.prevent="fetch"
                   >
                     Search
                   </button>
@@ -39,18 +39,35 @@
 </template>
 
 <script lang="ts">
-import { defineComponent, inject } from "vue";
+import { defineComponent, inject, ref } from "vue";
+import axios from "axios";
+import router from "../router";
 
 export default defineComponent({
   setup() {
+    const search = ref("");
     const store: any = inject("store");
 
-    async function reset() {
-      store.state.fnacResults = [];
+    async function fetch() {
+      const content = { searchProduct: search.value };
+      await axios
+        .post("http://localhost/fnac", content)
+        .then(res => {
+          store.state.fnacResults = res.data;
+        })
+        .catch(err => console.log(err));
+      await axios
+        .post("http://localhost/inter", content)
+        .then(res => {
+          store.state.interResults = res.data;
+        })
+        .catch(err => console.log(err));
+      router.push("/results");
     }
     return {
       store,
-      reset
+      search,
+      fetch
     };
   }
 });

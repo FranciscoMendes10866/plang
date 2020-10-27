@@ -21,11 +21,11 @@ export default defineComponent({
   -moz-osx-font-smoothing: grayscale;
 }
 .bg-main {
-  background-color: #004643 !important;
+  background-color: #16161a !important;
 }
 .btn-bg-main {
-  background-color: #f9bc60 !important;
-  color: #001e1d !important;
+  background-color: #7f5af0 !important;
+  color: #fffffe !important;
   outline: none !important;
   border: none !important;
 }

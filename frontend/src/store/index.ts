@@ -1,7 +1,7 @@
 import { reactive } from "vue";
 
 const state = reactive({
-  fnacResults: ["francisco", "mendes"],
+  fnacResults: [],
   interResults: []
 });
 
