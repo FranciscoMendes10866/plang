@@ -5,9 +5,13 @@ const app = fastify();
 
 app.register(require('fastify-cors'));
 
+app.get('/', (request, reply) => {
+  return reply.send({ msg: 'InterDiscount api working.' });
+});
+
 app.post('/', async (request, reply) => {
   const { searchProduct } = request.body;
-  const browser = await puppeteer.launch({ headless: true });
+  const browser = await puppeteer.launch({ args: ['--no-sandbox', '--disable-setuid-sandbox'] });
   const page = await browser.newPage();
   await page.goto('https://www.interdiscount.ch/de', { waitUntil: 'networkidle2' });
   await page.type('._3fsIMp', searchProduct, { delay: 0 });
@@ -26,4 +30,4 @@ app.post('/', async (request, reply) => {
   return reply.send(results);
 });
 
-app.listen(5256);
+app.listen(5256, 'inter');

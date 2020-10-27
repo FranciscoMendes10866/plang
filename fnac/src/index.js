@@ -5,9 +5,13 @@ const app = fastify();
 
 app.register(require('fastify-cors'));
 
+app.get('/', (request, reply) => {
+  return reply.send({ msg: 'Fnac api working.' });
+});
+
 app.post('/', async (request, reply) => {
   const { searchProduct } = request.body;
-  const browser = await puppeteer.launch({ headless: true });
+  const browser = await puppeteer.launch({ args: ['--no-sandbox', '--disable-setuid-sandbox'] });
   const page = await browser.newPage();
   await page.goto('https://www.fr.fnac.ch/', { waitUntil: 'networkidle2' });
   await page.type('.Header__search-input', searchProduct, { delay: 0 });
@@ -25,4 +29,4 @@ app.post('/', async (request, reply) => {
   return reply.send(results);
 });
 
-app.listen(4159);
+app.listen(4159, 'fnac');

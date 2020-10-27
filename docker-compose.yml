@@ -25,7 +25,7 @@ services:
     ports:
       - 8080:80
     restart: on-failure
-  # First Go Fiber Api
+  # First Fastify Api
   fnac:
     image: fnac
     container_name: fnac
@@ -34,7 +34,7 @@ services:
     ports:
       - 4159:4159
     restart: on-failure
-  # Second Go Fiber Api
+  # Second Fastify Api
   inter:
     image: inter
     container_name: inter
