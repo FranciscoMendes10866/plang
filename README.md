@@ -36,7 +36,7 @@ Search for the product you want...
 
 If you want to test any of the node apis inside the containers, to test their operation, I recommend using an API Client such as `Postman` or `Insomnia`.
 
-To get the JSON response from the `fnac-api`, type the following URL:
+To get the JSON response from the `fnac-api` with the `POST` method, type the following URL:
 
 ```
 http://localhost/fnac
@@ -50,7 +50,7 @@ And send a json of this format:
 }
 ```
 
-To get the JSON response from the `inter-api`, type the following URL:
+To get the JSON response from the `inter-api` with the `POST` method, type the following URL:
 
 ```
 http://localhost/inter
