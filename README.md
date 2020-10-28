@@ -34,7 +34,7 @@ Search for the product you want...
 
 ## Nice to try
 
-If you want to test any of the node apis inside the containers, to test their operation, I recommend using an API Client such as `Postman` or ʻInsomnia`.
+If you want to test any of the node apis inside the containers, to test their operation, I recommend using an API Client such as `Postman` or `Insomnia`.
 
 To get the JSON response from the `fnac-api`, type the following URL:
 
